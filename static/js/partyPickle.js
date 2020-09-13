@@ -1,22 +1,19 @@
-var screenW = window.innerWidth;
+const drainUpdateTime = 100; //ms
+const vloeistofLevel = 300;
+let drainSpeed = 7; //lager is sneller
+const x = 0; //drain variabele voor bijhouden hoe lang voorbij is
+let refillActive = true;
 
-var drainUpdateTime = 100; //ms
-var vloeistofLevel = 300;
-var drainSpeed = 7; //lager is sneller
-var x = 0; //drain variabele voor bijhouden hoe lang voorbij is
-var refillActive = true;
+let touches = 0;
+let clearTouchTrack = 0;
 
-var touches = 0;
-var clearTouchTrack = 0;
+const newPosition = ["85px", "83px"]; //width, height
 
-var newPosition = ["85px", "83px"]; //width, height
+let potOpen = false;
 
-var potOpen = false;
-
-var i;
-var etenKleur = ["#585858", "#767676", "#101010", "#b7b7b7", "#dcdcdcx"];
-var divEten = document.querySelectorAll(".eten");
-var etenReset = 1;
+const etenKleur = ["#585858", "#767676", "#101010", "#b7b7b7", "#dcdcdcx"];
+const divEten = document.querySelectorAll(".eten");
+let etenReset = 1;
 
 //Animate pickle on click
 function newPos() {
@@ -143,7 +140,7 @@ document.querySelector("div.deksel").addEventListener("click", openPot);
 
 //eten geven
 function removeEtenAni() {
-  for (i = 0; i < divEten.length; i++) {
+  for (let i = 0; i < divEten.length; i++) {
     divEten[i].classList.remove("etenAnimate");
   }
   etenReset = 1;
@@ -161,7 +158,7 @@ function geefEten() {
     var grote;
     var offset;
 
-    for (i = 0; i < eetNummer; i++) {
+    for (let i = 0; i < eetNummer; i++) {
       positie = Math.floor(Math.random() * 15) - 7.5 + 50;
       offset = Math.floor(Math.random() * 50) + 25 + "px";
       grote = Math.floor(Math.random() * 10) + 10 + "px";
